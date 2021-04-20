@@ -20,8 +20,8 @@ BONUS:
 
 Bilder:
 
-![alt text](Unbekannt.png)
+![alt text](Unbenannt.png)
 
-![alt text](Unbekannt2.png)
+![alt text](Unbenannt2.png)
 
-![alt text](Unbekannt3.png)
+![alt text](Unbenannt3.png)
