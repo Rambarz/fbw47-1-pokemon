@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+.kanto{
+    background-color: rgb(212, 95, 95);
+}
+.hoenn{
+    background-color: rgb(95, 159, 212);
+}
+.johto{
+    background-color: rgb(95, 212, 95);
+}
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 54px;
+    color: white;
+}
+
+main {
+    padding: 40px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.searchBtn {
+    margin: 2rem auto;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+.searchBtn:focus{
+    border: 3px solid #222;
+}
+.searchBtn:hover{
+    background-color: lightgrey;
+}
+
+button {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(146, 143, 143);
+    font-size: 15px;
+    color: white;
+}
+button:hover{
+    cursor: pointer;
+    width: 200px;
+}
+
+
+#pokedex {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+
+
+.card {
+    list-style: none;
+    padding: 40px;
+    background-color: #f4f4f4;
+    color: #222;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.card:hover {
+    background-color: rgb(82, 80, 80);
+    color:white;
+    cursor: pointer;
+}
+
+
+.card-img {
+    height: 180px;
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.card-subtitle {
+    font-weight: lighter;
+    color: #666;
+    margin-top: 5px; 
+}
+#nextBtn, .generation {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(146, 143, 143);
+    font-size: 15px;
+    color: white;
+    text-align: center;
+}
+#nextBtn:hover, .generation:hover{
+    cursor: pointer;
+    width: 200px;
+}
+
+a{
+    text-decoration: none;
+    margin: 5px;
+}
+.generation:hover{
+    color:black;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
