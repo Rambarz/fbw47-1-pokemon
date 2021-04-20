@@ -12,7 +12,8 @@ Bild Beispiel: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/
 7. Achte genau auf die Rückgaben der einzelnen Pokemon und baue dir dein HTML richtig zusammen
 8. Die Details sollen auch wieder schließbar sein
 9. Ein Suchfeld soll auf einen eventListener hören und anschließend die richtigen Pokemon dastellen
-BONUS:
+10.BONUS!!!:
+<br/>
 1. Die Pokemon der jeweiligen Generationen können geladen werden
 2. In der Detail Ansicht kann zum vorherigen und zum nächsten Pokemon gewechselt werden
 3. In der Detail Ansicht werden mehr Informationen dargestellt
