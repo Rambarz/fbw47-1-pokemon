@@ -1,8 +1,11 @@
 const pokedex = document.getElementById("pokedex");
 const searchBar = document.getElementById("searchPoke");
+const prevGeneration = document.getElementById("prevg");
+const nextGeneration = document.getElementById("nextg");
 
 const fetchPokemon = async () => {
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=151`;
+  let parameter = getCurrentG();
+  const url = `https://pokeapi.co/api/v2/pokemon`+parameter;
   const res = await fetch(url);
   const data = await res.json();
   if(!data){
@@ -10,9 +13,8 @@ const fetchPokemon = async () => {
   } else{
     const pokemon = data.results.map((poke, index) => ({
       ...poke,
-      img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
-        1}.png`,
-      id: index + 1
+      img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.url.substring(34,37)}.png`,
+      id: poke.url.substring(34,37)
     }));
     if (searchBar.value.length === 0) {
       displayPokemon(pokemon);
@@ -31,8 +33,6 @@ const fetchPokemon = async () => {
   };
   }
 
-
-
 const displayPokemon = pokemon => {
   pokemon.map(poke => {
     const listElt = document.createElement("li");
@@ -40,13 +40,29 @@ const displayPokemon = pokemon => {
     listElt.addEventListener("click", () => {
       getPokemon(poke.id);
     });
-
+    document.getElementById("count").innerHTML = "Anzahl: "+pokemon.length;
     const imgElt = document.createElement("img");
-    imgElt.src = `${poke.img}`;
+    console.log();
+    if(poke.img.substring(75,76)== "/"){
+      let source = poke.img.substring(0,75)+ poke.img.substring(76,82)
+      imgElt.src = `${source}`;
+    } else if (poke.img.substring(74,75)== "/"){
+      let source = poke.img.substring(0,74)+ poke.img.substring(75,82)
+      imgElt.src = `${source}`;
+    } else{
+      imgElt.src = `${poke.img}`;
+    }
     imgElt.classList = "card-img";
-
     const nameElt = document.createElement("h3");
-    nameElt.textContent = `${poke.id}. ${poke.name}`;
+    if(poke.id.charAt(1)== "/"){
+      let pokemonId = poke.id.substring(0,1)
+      nameElt.textContent = `${pokemonId}. ${poke.name}`;
+    } else if(poke.id.charAt(2)== "/"){
+      let pokemonId = poke.id.substring(0,2)
+      nameElt.textContent = `${pokemonId}. ${poke.name}`;
+    } else{
+      nameElt.textContent = `${poke.id}. ${poke.name}`;
+    }
     nameElt.classList = "card-title";
 
     listElt.appendChild(imgElt);
@@ -148,4 +164,49 @@ const closePopup = () => {
   fetchPokemon();
 };
 
-fetchPokemon();
+const getCurrentG = ()=>{
+  let currentValue = document.getElementById("hidden").value;
+  if(currentValue==1){
+    document.getElementById("prevg").display = "none";
+    document.body.style.backgroundColor = "salmon";
+    document.getElementById("generationhead").innerText = "1. Generation Kanto";
+    let parameter = "?limit=151";
+    return parameter;
+  } else if (currentValue==2){
+    document.body.style.backgroundColor = "lightgreen";
+    document.getElementById("generationhead").innerText = "2. Generation Johto";
+    let parameter = "?limit=100&offset=151";
+    return parameter;
+  } else if (currentValue==3){
+    document.body.style.backgroundColor = "lightblue";
+    document.getElementById("generationhead").innerText = "3. Generation Hoenn";
+    let parameter = "?limit=100&offset=251";
+    return parameter;
+  } else{
+    //alert("Too high Generation")
+    let parameter = "?limit=151";
+    return parameter;
+  }
+
+}
+const increaseCurrent = ()=>{
+  let current = parseInt(document.getElementById("hidden").value,10);
+  let currentAtt = document.getElementById("hidden");
+  current++;
+  currentAtt.value = current;
+  pokedex.innerHTML = "";
+  fetchPokemon();
+}
+const decreaseCurrent = ()=>{
+  let current = parseInt(document.getElementById("hidden").value,10);
+  let currentAtt = document.getElementById("hidden");
+  current--;
+  currentAtt.value = current;
+  pokedex.innerHTML = "";
+  fetchPokemon();
+}
+prevGeneration.addEventListener("click", decreaseCurrent)
+nextGeneration.addEventListener("click", increaseCurrent)
+document.addEventListener("DOMContentLoaded", function() {
+  fetchPokemon();
+});

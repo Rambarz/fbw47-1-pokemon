@@ -11,13 +11,17 @@ body {
 .johto{
     background-color: rgb(95, 212, 95);
 }
-h1 {
+h1  {
     text-transform: uppercase;
     text-align: center;
     font-size: 54px;
     color: white;
 }
-
+#count{
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
 main {
     padding: 40px;
     margin: 0 auto;
@@ -104,6 +108,7 @@ button:hover{
     font-size: 15px;
     color: white;
     text-align: center;
+    margin:5px;
 }
 #nextBtn:hover, .generation:hover{
     cursor: pointer;
@@ -122,4 +127,8 @@ a{
 .flex{
     display: flex;
     justify-content: center;
+}
+
+#hidden{
+    display: none;
 }

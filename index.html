@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="style.css" />
     <title>Pokedex</title>
   </head>
-  <body class="kanto">
+  <body>
     <header>
-      <h1>1. Generation Kanto Pokedex</h1>
+      <h1 id="generationhead">1. Generation Kanto Pokedex</h1>
+      <p id="count"></p>
       <br>
-      <div class="flex">
-        <a href="index2.html">
-          <span class="generation" id="firstG">Next Generation</span>
-        </a>
+      <input type="number" id="hidden" value=1>
+      <div class="flex" value="1" id="generationChecker">
+        <span class="generation" id="prevg">Previous Generation</span>
+        <span class="generation" id="nextg">Next Generation</span>
       </div>
     </header>
     <main>
